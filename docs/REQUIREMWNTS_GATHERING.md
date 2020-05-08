@@ -5,7 +5,7 @@
 |-----------------------|---------------|
 | Name			| XYZ           |
 | Business Structure 	| Partnership	|
-| Partners 		| Bikash Gupta(bikashgup@hotmail.com)<br/> Aditi Gajurel(aditigajurel1998@gmail.com)|
+| Partners 		| Bikash Gupta(<bikashgup@hotmail.com>)<br/> Aditi Gajurel(<aditigajurel1998@gmail.com>)|
 | Address		| Kathmandu, Nepal|
 | Employee Number	| 40-50		|
 | Company Type		| Private |
@@ -54,6 +54,9 @@
   1. Data  from different sources.
   2. Data Annotation and labeling using Mechanical Turk,
   3. A multi-layered neural network with 3 hidden layers of 125, 25 and 5 neurons respectively.
+
+  ![Expected Workflow](../assets/images/flow.png)
+
 
 ### Source of the Data
 
