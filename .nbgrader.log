@@ -1,0 +1,20 @@
+[NotebookApp | WARNING] No nbgrader_config.py file found (rerun with --debug to see where nbgrader is looking)
+[NotebookApp | INFO] Loading the validate_assignment nbgrader serverextension
+[NotebookApp | INFO] Serving notebooks from local directory: /home/darthvader/ML_FUSE/project/AITraining-Project1
+[NotebookApp | INFO] The Jupyter Notebook is running at:
+[NotebookApp | INFO] http://localhost:8888/?token=936efbd88cc0f7622d92cf672d7d99c5fe2b3d3e60874fd7
+[NotebookApp | INFO]  or http://127.0.0.1:8888/?token=936efbd88cc0f7622d92cf672d7d99c5fe2b3d3e60874fd7
+[NotebookApp | INFO] Use Control-C to stop this server and shut down all kernels (twice to skip confirmation).
+[NotebookApp | CRITICAL] 
+    
+    To access the notebook, open this file in a browser:
+        file:///home/darthvader/.local/share/jupyter/runtime/nbserver-12485-open.html
+    Or copy and paste one of these URLs:
+        http://localhost:8888/?token=936efbd88cc0f7622d92cf672d7d99c5fe2b3d3e60874fd7
+     or http://127.0.0.1:8888/?token=936efbd88cc0f7622d92cf672d7d99c5fe2b3d3e60874fd7
+[NotebookApp | INFO] Creating new notebook in /ml
+[NotebookApp | INFO] Kernel started: 3ec90cfc-2c5f-404b-ab48-668b39e3e6ac
+[NotebookApp | INFO] Saving file at /ml/bg_EDR.ipynb
+[NotebookApp | INFO] Saving file at /ml/bg_EDR.ipynb
+[NotebookApp | INFO] Saving file at /ml/bg_EDR.ipynb
+[NotebookApp | INFO] Saving file at /ml/bg_EDR.ipynb
