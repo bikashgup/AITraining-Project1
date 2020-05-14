@@ -20,3 +20,4 @@ def test(clf):
     resultList = clf.predict(X_test)
     outputtxt.write2file("../Output_txtfile/bigram.output.txt", resultList)
     evaluate.evaluation(resultList, y_test)
+    evaluate.plot_confusion_matrix(y_test, resultList)
