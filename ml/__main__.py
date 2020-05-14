@@ -1,9 +1,9 @@
-from data_preprocess import data_preprocessing as DP
-from config import data_paths as Dpath
+from .data_preprocess import data_preprocessing as DP
+from .config import data_paths as Dpath
 from sklearn.model_selection import train_test_split
 from sklearn.naive_bayes import MultinomialNB
 from sklearn.metrics import classification_report
-from outputs import file_write as FW
+from .outputs import file_write as FW
 
 def main():
     ## getting X, Y dataset
