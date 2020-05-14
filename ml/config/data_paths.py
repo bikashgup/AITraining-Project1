@@ -1,0 +1,1 @@
+ISEAR_DATA_PATH = 'data/ISEAR.csv'
