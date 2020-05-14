@@ -1,8 +1,8 @@
-from data_preprocess import document_term_matrix as DTM
-from data_preprocess import encoding as DEncode
+from . import document_term_matrix as DTM
+from . import encoding as DEncode
 
-from data_cleaning import cleaning_data as cleanD
-from data_cleaning import data_loading as loadD
+from ..data_cleaning import cleaning_data as cleanD
+from ..data_cleaning import data_loading as loadD
 
 
 def preprocessed_ISEAR_data(path):
