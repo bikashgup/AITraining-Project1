@@ -1,7 +1,7 @@
 from sklearn.linear_model import SGDClassifier
 from sklearn.model_selection import train_test_split
-import load_data
-import dtm, evaluate, outputtxt
+
+import load_data, dtm, evaluate, outputtxt
 
 
 df = load_data.data_load()
