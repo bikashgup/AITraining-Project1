@@ -5,6 +5,7 @@ notebook==6.0.3
 numpy==1.18.4
 matplotlib==3.2.1
 nltk==3.5
+mlflow==1.8.0
 
 
 
