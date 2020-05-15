@@ -1,5 +1,5 @@
 from sklearn.feature_extraction.text import CountVectorizer
-
+from sklearn.feature_extraction.text import TfidfVectorizer
 
 def get_document_term_matrix(data):
     '''
@@ -18,6 +18,12 @@ def get_document_term_matrix(data):
      value_counts
     '''
     vectorizer = CountVectorizer(stop_words='english', ngram_range=(1,2))
+    document_term_matrix = vectorizer.fit_transform(data)
+
+    return document_term_matrix
+
+def tfidf(data):
+    vectorizer = TfidfVectorizer(stop_words='english', ngram_range=(1,2))
     document_term_matrix = vectorizer.fit_transform(data)
 
     return document_term_matrix

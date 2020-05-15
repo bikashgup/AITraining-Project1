@@ -25,7 +25,8 @@ def preprocessed_ISEAR_data(path):
     ## cleaning data
     data[2] = data[2].apply(lambda x:cleanD.cleaning_ISEAR_data(x))
     ## getting the document_term_matrix
-    dtm = DTM.get_document_term_matrix(data[2])
+    #dtm = DTM.get_document_term_matrix(data[2])
+    dtm = DTM.tfidf(data[2])
     ## label encoding target data
     Y, label_encoder = DEncode.target_encoding(data[1])
 

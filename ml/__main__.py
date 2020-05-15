@@ -81,7 +81,7 @@ def main():
             mlflow.log_metric('accuracy', accuracy_score(y_test, y_test_pred))
             mlflow.log_metrics({'precision':precision, 'recall': recall, 'F1score':f1score})
             mlflow.log_param('classifier', model_name)
-
+            mlflow.log_param('document_term_matrix', 'tidf')
             ## saving classification report for both training and testing set
 
             save_classification_report(y_train, y_train_pred, y_test, y_test_pred, model_name)
