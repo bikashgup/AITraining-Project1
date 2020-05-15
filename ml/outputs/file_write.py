@@ -1,4 +1,5 @@
 import csv
+from ..config import data_paths as Dpath
 
 def write2file(filename,resultList):
     """
@@ -13,7 +14,6 @@ def write2file(filename,resultList):
     -------
     None
     """
-
     with open(filename,'w',newline='') as outputFile:
         writer = csv.writer(outputFile)
         for result in resultList:
