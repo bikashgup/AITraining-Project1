@@ -12,3 +12,8 @@ AI training projects for 10 days.
 
 ## EDA(CAR ADS DATA)
  The link to the EDA analysis file is [here](./notebook/Car_Ads_Analysis/bg_car_ads_data_analysis.ipynb).
+
+## Emotion detection and recognition
+  ### Execution code
+  `python -m ml`
+  
