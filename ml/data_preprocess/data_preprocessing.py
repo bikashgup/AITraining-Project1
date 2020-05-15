@@ -27,6 +27,6 @@ def preprocessed_ISEAR_data(path):
     ## getting the document_term_matrix
     dtm = DTM.get_document_term_matrix(data[2])
     ## label encoding target data
-    Y = DEncode.target_encoding(data[1])
+    Y, label_encoder = DEncode.target_encoding(data[1])
 
-    return dtm, Y
+    return dtm, Y, label_encoder

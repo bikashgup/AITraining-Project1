@@ -18,4 +18,4 @@ def target_encoding(data):
     data = le.fit_transform(data)
     print(le.classes_)
 
-    return data
+    return data, le

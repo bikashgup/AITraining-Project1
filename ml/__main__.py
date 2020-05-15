@@ -17,7 +17,6 @@ from sklearn.metrics import precision_recall_fscore_support as PRFS
 
 from sklearn.naive_bayes import MultinomialNB
 from sklearn.linear_model import LogisticRegression
-from sklearn.ensemble import RandomForestClassifier
 from sklearn.svm import LinearSVC
 
 import mlflow
@@ -28,15 +27,14 @@ from urllib.parse import urlparse
 
 CV = 5
 models = [
-    RandomForestClassifier(n_estimators=200, max_depth=3, random_state=0),
     LinearSVC(),
     MultinomialNB(),
     LogisticRegression(random_state=0),
 ]
 
-def plot_confusion_matrix(y_actual, y_pred, model_name):
+def plot_confusion_matrix(y_actual, y_pred, model_name, label_encoder):
   cm = confusion_matrix(y_actual, y_pred)
-  df_cm = pd.DataFrame(cm, columns = np.unique(y_actual), index = np.unique(y_actual))
+  df_cm = pd.DataFrame(cm, columns = np.unique(label_encoder.inverse_transform(y_actual)), index = np.unique(label_encoder.inverse_transform(y_actual)))
   df_cm.index.name ='Actual'
   df_cm.columns.name = 'Predicted'
   plt.figure(figsize = (10, 8))
@@ -67,7 +65,7 @@ def save_classification_report(y_train, y_train_pred, y_test, y_test_pred, model
 def main():
 
     ## getting X, Y dataset
-    X, Y = DP.preprocessed_ISEAR_data(Dpath.ISEAR_DATA_PATH)
+    X, Y, label_encoder = DP.preprocessed_ISEAR_data(Dpath.ISEAR_DATA_PATH)
     entries = []
     ## spltting dataset into training and testing sets
     X_train, X_test, y_train, y_test = train_test_split(X, Y, test_size=0.3, shuffle=True)
@@ -88,7 +86,7 @@ def main():
 
             save_classification_report(y_train, y_train_pred, y_test, y_test_pred, model_name)
             ## saving images of confusion matrix for testing data
-            confusion_matrix = plot_confusion_matrix(y_test_pred, y_test, model_name)
+            confusion_matrix = plot_confusion_matrix(y_test_pred, y_test, model_name, label_encoder)
 
             tracking_url = urlparse(mlflow.get_tracking_uri()).scheme
             # Model registry does not work with file store
