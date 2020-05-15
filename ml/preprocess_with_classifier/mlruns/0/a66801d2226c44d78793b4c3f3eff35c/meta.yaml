@@ -1,0 +1,15 @@
+artifact_uri: file:///home/aditi/AITraining-Project1/ml/preprocess_with_classifier/mlruns/0/a66801d2226c44d78793b4c3f3eff35c/artifacts
+end_time: 1589466384361
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+name: ''
+run_id: a66801d2226c44d78793b4c3f3eff35c
+run_uuid: a66801d2226c44d78793b4c3f3eff35c
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1589466384195
+status: 3
+tags: []
+user_id: aditi
