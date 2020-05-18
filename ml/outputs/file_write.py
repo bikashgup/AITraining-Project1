@@ -1,5 +1,4 @@
 import csv
-from ..config import data_paths as Dpath
 
 def write2file(filename,resultList):
     """
