@@ -17,6 +17,7 @@ Werkzeug==1.0.1
 six==1.14.0
 python-dateutil==2.8.1
 python-dotenv==0.13.0
+bson==0.5.9
 
 
 
