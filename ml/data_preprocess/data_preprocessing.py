@@ -3,7 +3,10 @@ from . import encoding as DEncode
 
 from ..data_cleaning import cleaning_data as cleanD
 from ..data_cleaning import data_loading as loadD
+from .data_augmentation import synonym_random_aug as SR_AUG
+import os 
 
+save_path = os.path.dirname(os.path.dirname(__file__)) + '/data/augmented_ISEAR.csv'
 
 def preprocessed_ISEAR_data(path):
     '''
@@ -21,13 +24,23 @@ def preprocessed_ISEAR_data(path):
     '''
 
     ## getting target_labels and data
-    target_labels, data = loadD.loading_ISEAR_data(path)
+    target_labels, data = loadD.loading_augmented_ISEAR_data(path)
+    
     ## cleaning data
-    data[2] = data[2].apply(lambda x:cleanD.cleaning_ISEAR_data(x))
+    data['sentences'] = data['sentences'].apply(lambda x:cleanD.cleaning_ISEAR_data(x))
+    
     ## getting the document_term_matrix
-    #dtm = DTM.get_document_term_matrix(data[2])
-    dtm = DTM.tfidf(data[2])
+    # dtm = DTM.get_document_term_matrix(data['sentences'])
+    
+    dtm = DTM.tfidf(data['sentences'])
+    
     ## label encoding target data
-    Y, label_encoder = DEncode.target_encoding(data[1])
+    Y, label_encoder = DEncode.target_encoding(data['labels'])
 
     return dtm, Y, label_encoder
+
+def saving_augmented_data(data):
+    
+    data = SR_AUG.new_data_frame(data)
+    data.to_csv(save_path)
+    
