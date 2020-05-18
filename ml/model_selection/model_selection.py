@@ -13,13 +13,16 @@ from ..model_selection import split_dataset as SD
 from ..data_preprocess import data_preprocessing as DP
 
 
-def mlflow_saving(params, metrics, artifacts, model, experiment_name):
+def mlflow_saving(params, metrics, support, artifacts, model, experiment_name):
     
     with mlflow.start_run(run_name=model.__class__.__name__+"-"+experiment_name):
         
         mlflow.log_params(params)
         mlflow.log_param('classifier', model.__class__.__name__)
         mlflow.log_metrics(metrics)
+        
+        if support:
+            mlflow.log_metric('support', support)
         
         for i in artifacts:
             mlflow.log_artifact(i)
@@ -79,10 +82,10 @@ def model_fit(model, test_size, DATA_PATH, OUT_PATH, experiment_name):
     mlflow_saving(
         model.get_params(),
         metrics,
+        support,
         artifacts,
         model,
-        experiment_name,
-        OUT_PATH
+        experiment_name
     )      
 
-    return metrics, accuracy_score(y_train, y_train_pred), artifacts
+    return metrics, support, accuracy_score(y_train, y_train_pred), artifacts
