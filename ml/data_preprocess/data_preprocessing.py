@@ -30,14 +30,14 @@ def preprocessed_ISEAR_data(path):
     data['sentences'] = data['sentences'].apply(lambda x:cleanD.cleaning_ISEAR_data(x))
     
     ## getting the document_term_matrix
-    # dtm = DTM.get_document_term_matrix(data['sentences'])
+    dtm, vectorizer = DTM.get_document_term_matrix(data['sentences'])
     
-    dtm = DTM.tfidf(data['sentences'])
+    # dtm = DTM.tfidf(data['sentences'])
     
     ## label encoding target data
     Y, label_encoder = DEncode.target_encoding(data['labels'])
 
-    return dtm, Y, label_encoder
+    return dtm, Y, label_encoder, vectorizer
 
 def saving_augmented_data(data):
     

@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{%block head%}
+{%endblock%}
+{%block content%}
+<h1> Emotion Detection and Recognition - ISEAR DATA</h1>
+<div>
+    <h1>Model Name : {{data.model}}</h1>
+    <form action="/save_model_result" method="POST">
+        {%for key,value in data.metrics.items()%}
+        <label for="input_data" >{{key}}</label>
+        <input type="text" id="{{key}}" name="{{key}}" value="{{value}}" readonly ><br>
+        {%endfor%}
+        <input type="hidden" id="model" name="model" value="{{data.model}}" readonly ><br>
+        {%if not data.success_text %}
+        <input type="submit" value="Submit">
+        {%endif%}
+    </form>
+<div>
+{%if data.success_text %}
+<h1>{{data.success_text}}</h1>
+{%endif%}
+{%endblock%}

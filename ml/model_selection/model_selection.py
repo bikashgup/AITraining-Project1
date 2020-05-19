@@ -9,9 +9,17 @@ from ..outputs import (
     save_experiment_reports as SER, 
     save_experiment_outputs_plot as SEOP
 )
+from ...app.ISEAR_app.config import CHECKPOINT
+from ...utils.create_folder import create_folder
 from ..model_selection import split_dataset as SD
 from ..data_preprocess import data_preprocessing as DP
 
+import joblib
+
+def saving_checkpoints(filepath, data, experiment_name):
+    create_folder(CHECKPOINT+experiment_name)
+    with open(filepath,'wb') as outputFile:
+        joblib.dump(data, outputFile)
 
 def mlflow_saving(params, metrics, support, artifacts, model, experiment_name):
     
@@ -40,7 +48,7 @@ def mlflow_saving(params, metrics, support, artifacts, model, experiment_name):
 def model_fit(model, test_size, DATA_PATH, OUT_PATH, experiment_name):
     
     ## getting X, Y dataset
-    X, Y, label_encoder = DP.preprocessed_ISEAR_data(DATA_PATH)
+    X, Y, label_encoder, vectorizer = DP.preprocessed_ISEAR_data(DATA_PATH)
     entries = []
     ## spltting dataset into training and testing sets
     X_train, X_test, y_train, y_test = SD.test_train_split(X, Y, test_size)
@@ -86,6 +94,15 @@ def model_fit(model, test_size, DATA_PATH, OUT_PATH, experiment_name):
         artifacts,
         model,
         experiment_name
-    )      
+    )    
+    ## saving model checkpoints
+    saving_checkpoints(CHECKPOINT+experiment_name+'/'+'model', model, experiment_name)
+    ## saving Vectorizer checkpoint
+    saving_checkpoints(CHECKPOINT+experiment_name+'/'+'vectorizer', vectorizer, experiment_name)
+    ## saving metrics checkpoint 
+    saving_checkpoints(CHECKPOINT+experiment_name+'/'+'metrics', metrics, experiment_name)
+    ## saving label encoder checkpoint 
+    saving_checkpoints(CHECKPOINT+experiment_name+'/'+'label_encoder', label_encoder, experiment_name)
+
 
     return metrics, support, accuracy_score(y_train, y_train_pred), artifacts

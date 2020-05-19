@@ -20,10 +20,10 @@ def get_document_term_matrix(data):
     vectorizer = CountVectorizer(stop_words='english', ngram_range=(1,2))
     document_term_matrix = vectorizer.fit_transform(data)
 
-    return document_term_matrix
+    return document_term_matrix, vectorizer
 
 def tfidf(data):
     vectorizer = TfidfVectorizer(stop_words='english', ngram_range=(1,2))
     document_term_matrix = vectorizer.fit_transform(data)
 
-    return document_term_matrix
+    return document_term_matrix, vectorizer

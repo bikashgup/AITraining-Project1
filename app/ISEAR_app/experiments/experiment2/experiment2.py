@@ -5,8 +5,8 @@ from sklearn.svm import LinearSVC
 from ...config import AUG_DATA_PATH, OUT_PATH
 from .....ml.model_selection import model_selection as MS
 
-test_size = 0.3
-experiment_name = 'experiment2/4.0'
+test_size = 0.2
+experiment_name = 'experiment2/5.0'
 models = [
     MultinomialNB(),
     LinearSVC(),
@@ -16,7 +16,7 @@ models = [
 def experiment1():
    
    nb = MultinomialNB()
-   mertrics, training_score, artifacts = MS.model_fit(nb, test_size, AUG_DATA_PATH, OUT_PATH, experiment_name)
+   mertrics, support, training_score, artifacts = MS.model_fit(nb, test_size, AUG_DATA_PATH, OUT_PATH, experiment_name)
    
 def experiment2():
    for model in models:    
