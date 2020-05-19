@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{%block head%}
+{%endblock%}
+{%block content%}
+
+<p> <strong>Emotion Detection and Recognition - ISEAR DATA</strong></p>
+<div>
+    <p>Model Name : <strong>{{data.model}}</strong></p><br>
+    <form action="/predict" method="POST">
+        <label for="input_data" >Your Emotion</label><br>
+        <textarea name="data" id="data" rows="4" cols="50"></textarea><br>
+        <input type="hidden" id="model" name="model" value="{{data.model}}" readonly ><br>
+        <input type="submit" value="Submit">
+    </form>
+</div>
+{%if data.success_text %}
+<h2>Your emotion is: <strong>{{data.predicted_value}}</strong></h2><br>
+<image src ={{url_for('static', filename=data.filepath)}} alt="predict_proba plot" width="500" height="300"/>
+{%endif%}
+{%endblock%}

@@ -20,4 +20,5 @@ python-dateutil==2.8.1
 python-dotenv==0.13.0
 bson==0.5.9
 Flask-Cors==3.0.8
+Flask-PyMongo==2.3.0
 

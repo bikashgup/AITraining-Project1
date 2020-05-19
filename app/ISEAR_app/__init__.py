@@ -1,7 +1,8 @@
 
 from flask import Flask 
-
-ISEAR_app = Flask(__name__)
+from ...settings import BASE_DIR
+filepath = BASE_DIR +'/static'
+ISEAR_app = Flask(__name__, static_folder=filepath)
 
 from .api.routes import routes
 from .api.models import models

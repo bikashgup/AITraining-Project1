@@ -1,13 +1,13 @@
+import joblib
+import matplotlib.pyplot as plt
+import numpy as np
+from flask import url_for
 from ....ISEAR_app import ISEAR_app
 from flask import request, render_template
 from .....settings import shared_components, BASE_DIR
 from ..models.models import mongo
 from datetime import datetime as dt
 from ...config import CHECKPOINT
-from sklearn.feature_extraction.text import TfidfVectorizer, CountVectorizer
-import pandas as pd
-import joblib
-
 # Select the database
 db = mongo.db
 shared_components['db'] = db
@@ -36,7 +36,7 @@ def save_model_result():
     if request.method == 'POST':
         precision = request.form['precision']
         accuracy = request.form['accuracy']
-        recall = request.form['recall']
+        recall =  request.form['recall']
         f1score = request.form['f1score']
         model_name = request.form['model']        
         data = {
@@ -55,3 +55,35 @@ def save_model_result():
         
         return render_template('index.html', data = {'metrics':metrics, 'model':model_name, 'success_text':'Your model saved succefuuly.'} )
     
+@ISEAR_app.route('/predict', methods=['GET', 'POST'])
+def predict():
+    if request.method == 'GET':
+        return render_template('predict.html', data={'model':model.__class__.__name__})
+    elif request.method == 'POST':
+        data = request.form['data']
+        data = data.lower()
+        data = vectorizer.transform([data,])
+        print(data)
+        y = model.predict(data)
+        proba = model.predict_proba(data)
+        predicted_value = label_encoder.inverse_transform(y)
+        classes = label_encoder.classes_
+        y_pos = np.arange(len(classes))
+        print(classes, predicted_value, proba)
+        plt.figure(figsize = (10, 8))
+        plt.barh(y_pos, proba[0], align='center')
+        plt.yticks(y_pos, tuple(classes))
+        plt.xlabel('predict_proba')
+        data = {
+            'model':model.__class__.__name__,
+            'predicted_value': predicted_value[0],
+            'filepath': '/images/image.png',
+            'datetime': dt.now()
+        }
+        database = shared_components['db']
+        database.predicted_output.insert(data)
+        filepath = BASE_DIR + '/static/images/'
+        plt.savefig(filepath +'image.png')
+        data['success_text'] = 'predictted your output'
+
+        return render_template('predict.html', data=data)

@@ -16,6 +16,5 @@ def target_encoding(data):
 
     le = LabelEncoder()
     data = le.fit_transform(data)
-    print(le.classes_)
 
     return data, le

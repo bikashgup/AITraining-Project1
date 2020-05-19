@@ -48,6 +48,7 @@ def mlflow_saving(params, metrics, support, artifacts, model, experiment_name):
 def model_fit(model, test_size, DATA_PATH, OUT_PATH, experiment_name):
     
     ## getting X, Y dataset
+    
     X, Y, label_encoder, vectorizer = DP.preprocessed_ISEAR_data(DATA_PATH)
     entries = []
     ## spltting dataset into training and testing sets
@@ -58,7 +59,8 @@ def model_fit(model, test_size, DATA_PATH, OUT_PATH, experiment_name):
     
     y_train_pred = model.predict(X_train)
     y_test_pred = model.predict(X_test)
-    
+    # data = vectorizer.inverse_transform(X[0])
+    # print(data)
     precision, recall, f1score, support = PRFS(y_test, y_test_pred, average="micro")
     
     ## saving classification report for both training and testing set
