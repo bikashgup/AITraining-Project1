@@ -8,7 +8,7 @@
     <p>Model Name : <strong>{{data.model}}</strong></p><br>
     <form action="/predict" method="POST">
         <label for="input_data" >Your Emotion</label><br>
-        <textarea name="data" id="data" rows="4" cols="50"></textarea><br>
+        <textarea name="data" id="data" rows="4" cols="50">{%if data.text%}{{data.text}}{%endif%}</textarea><br>
         <input type="hidden" id="model" name="model" value="{{data.model}}" readonly ><br>
         <input type="submit" value="Submit">
     </form>
