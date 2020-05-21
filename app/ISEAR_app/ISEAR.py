@@ -1,5 +1,5 @@
-from ..ISEAR_app import ISEAR_app
+from .run_app import run_app
 
 if __name__ == '__main__':
     # Running app in debug mode
-    app.run(debug=True)
+    run_app.run(debug=True)

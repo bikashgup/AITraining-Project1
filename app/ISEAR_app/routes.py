@@ -2,7 +2,7 @@ import joblib
 import matplotlib.pyplot as plt
 import numpy as np
 from flask import url_for
-from ..ISEAR_app import ISEAR_app
+from .run_app import run_app
 from flask import request, render_template
 from .settings import shared_components, BASE_DIR
 from .models import mongo
@@ -23,7 +23,7 @@ label_encoder = read_file(CHECKPOINT+ 'experiment2/label_encoder')
 vectorizer = read_file(CHECKPOINT + 'experiment2/vectorizer')
 metrics = read_file(CHECKPOINT + 'experiment2/metrics')
 
-@ISEAR_app.route('/')
+@run_app.route('/')
 def index():
     data = {
         'metrics':metrics,
@@ -31,7 +31,7 @@ def index():
     }
     return render_template('index.html', data=data)
 
-@ISEAR_app.route('/save_model_result', methods=['POST'])
+@run_app.route('/save_model_result', methods=['POST'])
 def save_model_result():
     if request.method == 'POST':
         precision = request.form['precision']
@@ -55,7 +55,7 @@ def save_model_result():
         
         return render_template('index.html', data = {'metrics':metrics, 'model':model_name, 'success_text':'Your model saved succefuuly.'} )
     
-@ISEAR_app.route('/predict', methods=['GET', 'POST'])
+@run_app.route('/predict', methods=['GET', 'POST'])
 def predict():
     if request.method == 'GET':
         return render_template('predict.html', data={'model':model.__class__.__name__})
@@ -67,6 +67,7 @@ def predict():
         print(data)
         y = model.predict(data)
         proba = model.predict_proba(data)
+        
         predicted_value = label_encoder.inverse_transform(y)
         classes = label_encoder.classes_
         y_pos = np.arange(len(classes))

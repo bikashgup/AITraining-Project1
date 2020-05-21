@@ -1,4 +1,4 @@
-version: "3"
+version: "2"
 
 services:
     db:
@@ -9,9 +9,10 @@ services:
             - "27018:27017"
     web:
         build: .
-        volumes: 
-            - .:/app
+        command: python -m ISEAR_app.ISEAR
         ports:
-            - "5001:5000"
+            - "5000:5000"
         depends_on: 
             - db
+
+        network_mode: "host"
