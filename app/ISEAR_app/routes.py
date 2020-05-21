@@ -32,13 +32,15 @@ def save_model_result():
         'metrics':metrics,
         'model': model.__class__.__name__
     }
-    return render_template('index.html', data=data)
-    if request.method == 'POST':
+        return render_template('index.html', data=data)
+
+    elif request.method == 'POST':
         precision = request.form['precision']
         accuracy = request.form['accuracy']
         recall =  request.form['recall']
         f1score = request.form['f1score']
-        model_name = request.form['model']        
+        model_name = request.form['model']   
+             
         data = {
             'precision': precision,
             'accuracy': accuracy,
