@@ -2,6 +2,12 @@
 
 AI training projects for 10 days.
 
+## Installing requirements.txt file 
+
+First install the requirements.txt file:
+
+`pip install -r requirements.txt`
+
 ## DOCUMENTS
 
 ### REQUIREMENT_GATHERING
@@ -18,8 +24,20 @@ AI training projects for 10 days.
   This whole code is for running EDR flask app.
 
   ### Execution code
-  `python -m app.ISEAR_app.ISEAR` Note: be in file AITraining-Project1 folder
-  `python -m ISEAR_app.ISEAR`    Note: be in app folder
+  Either of the following methods, you can use to run the app:
+
+  1. `python -m app.ISEAR_app.ISEAR` 
+
+      or
+
+      `export FLASK_APP='app/ISEAR_app/I'`
+
+  Note: be in file AITraining-Project1 folder
+
+  2. `python -m ISEAR_app.ISEAR`    
+  Note: be in app folder
+
+  3, 
 
   ### docker execution
 
@@ -28,5 +46,11 @@ AI training projects for 10 days.
 
   #### RUN build docker file
   `docker-compose up`
+
+## Ballot paper clasification
+
+  The link for Ballor paper link classification is [here](./notebook/Ballot Paper Classification/MobileNet/bg_ballot_paper_Mobilenet.ipynb).
+
+
 
   
