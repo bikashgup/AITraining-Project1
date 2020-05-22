@@ -56,7 +56,7 @@ First install the requirements.txt file:
 
 ## Ballot paper clasification
 
-  The link for Ballor paper classification is [here](./notebook/Ballot Paper Classification/MobileNet/bg_ballot_paper_Mobilenet.ipynb).
+  The link for Ballor paper classification is [here](./notebook/Ballot_Paper_Classification/MobileNet/bg_ballot_paper_Mobilenet.ipynb).
 
 
 
