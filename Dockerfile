@@ -1,27 +1,22 @@
 FROM python:3
 
-RUN mkdir /application
+RUN mkdir /application 
 
-ADD ./app /applicaion/
+ADD ./app /application/app
+ADD ./static /application/static
+ADD ./utils /application/utils
+ADD ./checkpoints /application/checkpoints
 
-ADD ./static /application/
-
-ADD ./utils /application/
-
-ADD ./checkpoints /application/
 
 COPY ./settings.py /application/
-
 COPY ./requirements.txt /application/
-
 COPY ./__init__.py /application/
 
-RUN pip install --upgrade pip
-
+RUN pip install --upgrade pip 
 RUN pip install -r /application/requirements.txt
 
-ENV FLASK_APP='app/ISEAR_app/ISEAR.py'
-
 WORKDIR  /application/
+
+ENV FLASK_APP="app/ISEAR_app/ISEAR.py"
 
 EXPOSE 5000

@@ -1,0 +1,15 @@
+artifact_uri: file:///home/darthvader/ML_FUSE/project/AITraining-Project1/mlruns/0/f553d56c0505411f8c9be9684dcd3153/artifacts
+end_time: 1590145495045
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+name: ''
+run_id: f553d56c0505411f8c9be9684dcd3153
+run_uuid: f553d56c0505411f8c9be9684dcd3153
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1590145494895
+status: 3
+tags: []
+user_id: darthvader

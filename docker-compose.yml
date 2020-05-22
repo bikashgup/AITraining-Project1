@@ -3,11 +3,11 @@ version: "2"
 services:
     db:
         image: mongo
-        container_name: "mongodb"
+        container_name: "mongodb1"
         
         ports:
             - "27018:27017"
-    web:
+    edr_app:
         build: .
         command: flask run
         ports:

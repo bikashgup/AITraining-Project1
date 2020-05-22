@@ -4,9 +4,13 @@ import numpy as np
 from flask import url_for
 from ....ISEAR_app import ISEAR_app
 from flask import request, render_template
-from .....settings import shared_components, CHECKPOINT, STATIC_IMAGE_PATH
 from ..models.models import mongo
 from datetime import datetime as dt
+
+try:
+    from .....settings import shared_components, CHECKPOINT, STATIC_IMAGE_PATH
+except:
+    from settings import shared_components, CHECKPOINT, STATIC_IMAGE_PATH
 
 # Select the database
 db = mongo.db

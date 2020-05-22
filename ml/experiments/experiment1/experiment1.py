@@ -1,6 +1,8 @@
 from sklearn.naive_bayes import MultinomialNB
- 
-from ....settings import DATA_PATH, OUT_PATH
+try:
+   from ....settings import DATA_PATH, OUT_PATH
+except:
+   from settings import DATA_PATH, OUT_PATH
 from ...model_selection import model_selection as MS
 
 test_size = 0.2

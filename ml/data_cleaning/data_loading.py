@@ -1,8 +1,11 @@
 import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
-from ...settings import BASE_DIR
-from ...utils import create_folder
+try:
+    from settings import BASE_DIR
+except:
+    from ...settings import BASE_DIR
+from utils import create_folder
 
 def loading_ISEAR_data(path):
     '''

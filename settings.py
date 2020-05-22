@@ -13,3 +13,5 @@ CHECKPOINT = BASE_DIR+ '/checkpoints/'
 STATIC_IMAGE_PATH = BASE_DIR + '/static/images/'
 
 shared_components = {"db": None}
+
+

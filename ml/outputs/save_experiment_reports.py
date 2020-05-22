@@ -1,7 +1,10 @@
 from sklearn.metrics import classification_report
 
-from ...ml.outputs import file_write as FW
-from ...utils import create_folder
+from . import file_write as FW
+try:
+    from utils import create_folder
+except:
+    from ...utils import create_folder
 
 
 def save_classification_report(y_train, y_train_pred, y_test, y_test_pred, model, OUT_PATH, experiment_name):

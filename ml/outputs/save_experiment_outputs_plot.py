@@ -3,8 +3,10 @@ import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
 from sklearn.metrics import confusion_matrix
-
-from ...utils import create_folder
+try:
+    from utils import create_folder
+except:
+    from ...utils import create_folder
 
 def plot_confusion_matrix(y_actual, y_pred, model_name, label_encoder, OUT_PATH, experiment_name, set_name):
     '''

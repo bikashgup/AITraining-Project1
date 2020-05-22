@@ -1,8 +1,10 @@
 from sklearn.naive_bayes import MultinomialNB
 from sklearn.linear_model import LogisticRegression
 from sklearn.svm import LinearSVC
- 
-from ....settings import AUG_DATA_PATH, OUT_PATH
+try:
+   from settings import AUG_DATA_PATH, OUT_PATH
+except:
+   from ....settings import AUG_DATA_PATH, OUT_PATH
 from ...model_selection import model_selection as MS
 
 test_size = 0.2

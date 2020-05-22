@@ -9,8 +9,12 @@ from ..outputs import (
     save_experiment_reports as SER, 
     save_experiment_outputs_plot as SEOP
 )
-from ...settings import CHECKPOINT
-from ...utils.create_folder import create_folder
+try:
+    from settings import CHECKPOINT
+    from utils.create_folder import create_folder
+except:
+    from ...settings import CHECKPOINT
+    from ...utils.create_folder import create_folder
 from ..model_selection import split_dataset as SD
 from ..data_preprocess import data_preprocessing as DP
 
