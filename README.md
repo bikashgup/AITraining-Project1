@@ -2,6 +2,9 @@
 
 AI training projects for 10 days.
 
+## Project Structure Overview
+  ![project_structure](./assets/images/project_structure.png)
+
 ## Installing requirements.txt file 
 
 First install the requirements.txt file:
