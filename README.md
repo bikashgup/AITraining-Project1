@@ -29,4 +29,4 @@ AI training projects for 10 days.
   
 ## For FLASK AND DOCKER IMPLEMENTAION
     
-    Refer to git branches `flask` and `docker`.
+   Refer to git branches `flask` and `docker`.
