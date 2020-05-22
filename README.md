@@ -15,5 +15,25 @@ AI training projects for 10 days.
 
 ## Emotion detection and recognition
   ### Execution code
-  `python -m ml`
+  ` ### Execution code
+  Either of the following methods, you can use to run the app:
+
+  1. `python -m app.ISEAR_app.ISEAR` 
+
+      or
+
+      `export FLASK_APP='app/ISEAR_app/ISEAR.py'`
+      
+      `flask run`
+      
+
+  Note: be in file AITraining-Project1 folder
+
+  2. `python -m ISEAR_app.ISEAR`  
+      
+      or
+      
+      `export FLASK_APP='ISEAR_app/ISEAR.py'
+      
+      `flask run`
   
