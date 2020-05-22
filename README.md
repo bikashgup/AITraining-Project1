@@ -26,3 +26,7 @@ AI training projects for 10 days.
   The notebook link for Ballot Paper Classification is [here](./notebook/MobileNet/bg_ballot_paper_Mobilenet.ipynb).
 
   The data link is here [here](./notebook/data/Ballot).
+  
+## For FLASK AND DOCKER IMPLEMENTAION
+    
+    Refer to git branches `flask` and `docker`.
