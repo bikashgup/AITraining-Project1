@@ -21,8 +21,6 @@ First install the requirements.txt file:
 
 ## Emotion detection and recognition
 
-  This whole code is for running EDR flask app.
-
   ### Execution code
   Either of the following methods, you can use to run the app:
 
@@ -30,14 +28,23 @@ First install the requirements.txt file:
 
       or
 
-      `export FLASK_APP='app/ISEAR_app/I'`
+      `export FLASK_APP='app/ISEAR_app/ISEAR.py'
+      
+      `flask run`
+      
 
   Note: be in file AITraining-Project1 folder
 
-  2. `python -m ISEAR_app.ISEAR`    
+  2. `python -m ISEAR_app.ISEAR`  
+      
+      or
+      
+      `export FLASK_APP='ISEAR_app/ISEAR.py'
+      
+      `flask run`
+      
   Note: be in app folder
 
-  3, 
 
   ### docker execution
 
@@ -49,7 +56,7 @@ First install the requirements.txt file:
 
 ## Ballot paper clasification
 
-  The link for Ballor paper link classification is [here](./notebook/Ballot Paper Classification/MobileNet/bg_ballot_paper_Mobilenet.ipynb).
+  The link for Ballor paper classification is [here](./notebook/Ballot Paper Classification/MobileNet/bg_ballot_paper_Mobilenet.ipynb).
 
 
 
