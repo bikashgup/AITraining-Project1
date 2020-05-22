@@ -17,7 +17,7 @@ def doc_term_matrix(data):
 
      """
 
-    data['Text_clean'] = data['Text'].apply(lambda x: datacleaning.clean_data(x))
+    # data['Text_clean'] = data['Text'].apply(lambda x: datacleaning.clean_data(x))
     vectorizer = CountVectorizer(stop_words='english', ngram_range=(1,2))
-    dtm = vectorizer.fit_transform(data['Text_clean'])
+    dtm = vectorizer.fit_transform(data['Text'])
     return dtm

@@ -8,13 +8,16 @@ import mlflow.sklearn
 from urllib.parse import urlparse
 
 
-import load_data, dtm, evaluate, outputtxt
+import load_data, dtm, evaluate, outputtxt, datacleaning, data_augmentation
 
 df = load_data.data_load()
+df = data_augmentation.new_data_frame(df)
+
 X = dtm.doc_term_matrix(df)
 y = df['Emotion']
-X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.40, random_state=42)
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.30, random_state=42)
 top_words = 5000
+print(X_test.shape)
 
 def train():
 
@@ -27,11 +30,11 @@ def train():
 
 
 def test(clf):
-    resultList = clf.predict(X_train)
+    resultList = clf.predict(X_test)
     model = "SGD-L2"
     outputtxt.write2file("../Output_txtfile/bigram.output.txt", resultList)
-    accuracy = evaluate.evaluation(y_train, resultList)
-    confusion = evaluate.plot_confusion_matrix(y_train, resultList)
+    accuracy = evaluate.evaluation(y_test, resultList)
+    confusion = evaluate.plot_confusion_matrix(y_test, resultList)
     mlflow.log_param("accuracy", accuracy)
     mlflow.log_param("Classifier", model)
 
