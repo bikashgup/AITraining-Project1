@@ -2,6 +2,9 @@
 
 AI training projects for 10 days.
 
+## Project Structure
+![project-structure](./static/images/project_structure.png)
+
 ## DOCUMENTS
 
 ### REQUIREMENT_GATHERING
