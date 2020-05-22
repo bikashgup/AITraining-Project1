@@ -31,7 +31,7 @@ First install the requirements.txt file:
 
       or
 
-      `export FLASK_APP='app/ISEAR_app/ISEAR.py'
+      `export FLASK_APP='app/ISEAR_app/ISEAR.py'`
       
       `flask run`
       
