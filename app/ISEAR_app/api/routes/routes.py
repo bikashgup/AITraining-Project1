@@ -4,10 +4,10 @@ import numpy as np
 from flask import url_for
 from ....ISEAR_app import ISEAR_app
 from flask import request, render_template
-from .....settings import shared_components, BASE_DIR
+from .....settings import shared_components, CHECKPOINT, STATIC_IMAGE_PATH
 from ..models.models import mongo
 from datetime import datetime as dt
-from ...config import CHECKPOINT
+
 # Select the database
 db = mongo.db
 shared_components['db'] = db
@@ -61,9 +61,10 @@ def predict():
         return render_template('predict.html', data={'model':model.__class__.__name__})
     elif request.method == 'POST':
         data = request.form['data']
+        text = data
         data = data.lower()
         data = vectorizer.transform([data,])
-        print(data)
+        
         y = model.predict(data)
         proba = model.predict_proba(data)
         predicted_value = label_encoder.inverse_transform(y)
@@ -74,16 +75,19 @@ def predict():
         plt.barh(y_pos, proba[0], align='center')
         plt.yticks(y_pos, tuple(classes))
         plt.xlabel('predict_proba')
+        
+        filename = predicted_value[0] + '_'+str(dt.now().time())+".png"
+        plt.savefig(STATIC_IMAGE_PATH + filename)
         data = {
             'model':model.__class__.__name__,
             'predicted_value': predicted_value[0],
-            'filepath': '/images/image.png',
-            'datetime': dt.now()
+            'filepath': '/images/' + filename,
+            'datetime': dt.now(),
+            'text' : text
         }
         database = shared_components['db']
         database.predicted_output.insert(data)
-        filepath = BASE_DIR + '/static/images/'
-        plt.savefig(filepath +'image.png')
-        data['success_text'] = 'predictted your output'
+        
+        data['success_text'] = 'predicted your output'
 
         return render_template('predict.html', data=data)
